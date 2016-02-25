@@ -1,5 +1,6 @@
 <?php
-
+use App\Post;
+use App\Tag;
 use Illuminate\Database\Seeder;
 
 class PostTableSeeder extends Seeder
@@ -12,6 +13,8 @@ class PostTableSeeder extends Seeder
     public function run()
     {
         //
-        factory('App\Post', 20)->create();
+        $tags = Tag::lists('tag');
+        Post::truncate();
+        factory(Post::class, 20)->create();
     }
 }
